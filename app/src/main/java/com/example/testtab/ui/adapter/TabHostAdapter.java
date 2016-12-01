@@ -1,12 +1,11 @@
 package com.example.testtab.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
 import android.widget.TabHost;
 
-import com.example.testtab.R;
-import com.example.testtab.model.TabItem;
+import com.example.testtab.model.TabItemViewHolder;
 
 import java.util.List;
 
@@ -15,11 +14,11 @@ import java.util.List;
  */
 
 public class TabHostAdapter {
-    private List<TabItem> tabItems;
+    private List<TabItemViewHolder> tabItems;
     private FragmentTabHost fragmentTabHost;
     private Context context;
     private int checkedPosition;
-    public TabHostAdapter(Context context,FragmentTabHost fragmentTabHost, List<TabItem> tabItems){
+    public TabHostAdapter(Context context,FragmentTabHost fragmentTabHost, List<TabItemViewHolder> tabItems){
         this.context = context;
         this.fragmentTabHost = fragmentTabHost;
         this.tabItems = tabItems;
@@ -32,7 +31,7 @@ public class TabHostAdapter {
         return tabItems.size();
     }
 
-    public TabItem getTabItem(int position){
+    public TabItemViewHolder getTabItem(int position){
         if(tabItems == null || position >= tabItems.size()){
             return null;
         }
@@ -51,7 +50,7 @@ public class TabHostAdapter {
             if(getTabItem(i).getFragmentClass() == null){
                 continue;
             }
-
+            Log.i("YKF","i="+i+"   "+getTabItem(i).getFragmentClass().getSimpleName());
             //设置tabSpec的tag   和view    tag = i
             String tag = i + "";
             TabHost.TabSpec tabSpec = fragmentTabHost.newTabSpec(tag).setIndicator(getTabItem(i).getTabView());
@@ -64,19 +63,19 @@ public class TabHostAdapter {
         return checkedPosition;
     }
 
-    public void setCheckedTabByPosition(int index){
-        setCheckedTabByTag(index+"");
+    public void setSelectedTabByPosition(int index){
+        setSelectedTabByTag(index+"");
     }
-    public void setCheckedTabByTag(String tag){
+    public void setSelectedTabByTag(String tag){
         if(getCount() == 0 ||fragmentTabHost == null ||context == null ){
             return;
         }
         for(int i =0 ;i<tabItems.size();i++){
             if((i + "").equals(tag)){
-                getTabItem(i).setChecked(true);
+                getTabItem(i).setSelected(true);
                 checkedPosition = i;
             }else{
-                getTabItem(i).setChecked(false);
+                getTabItem(i).setSelected(false);
             }
         }
     }
