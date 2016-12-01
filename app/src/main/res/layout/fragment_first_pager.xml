@@ -10,6 +10,7 @@
         android:id="@+id/tab_layout_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        app:tabMaxWidth="80dp"
         app:tabPaddingStart="0dp"
         app:tabPaddingEnd="0dp"
         app:tabBackground="@android:color/white"

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--appbarLayout 负责将子view 跟随某个可滑动的View进行滑动 -->
+    <!--coordinatorLayout 就是通过不同的behavior来协调,当子view中有一个
+    的位置或者大小发生变化的时候,其他的子View的变化,具体的变化以behavior来定,
+    可以自定义Behavior-->
+    <!--1、appbarLayout 要被包含在 CoordinatorLayout中,
+    让其来协调 和可滑动的view的动作
+    ,appbarLayout中内置了appbarLayout.behavior
+    2、可滑动的View要设置 layout_behavior为
+    @string/appbar_scrolling_view_behavior
+    其实就是AppbarLayout.AppbarScrollingViewBehavior
+    也用来被协调位置变化
+    3、AppbarLayout要滑动的子 View要设置layout_scrollFlags属性
+        多个子View都可以设置
+    -->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="30dp"
+            app:title="主题"
+            app:subtitle="副主题"
+            app:logo="@mipmap/ic_launcher"
+            app:layout_scrollFlags="scroll">
+        </android.support.v7.widget.Toolbar>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="20dp"
+            app:tabPaddingStart="0dp"
+            app:tabPaddingEnd="0dp"
+            app:tabMode="fixed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
+            >
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="ssssssssssssss
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            aaaaaaaaaaaaaaa
+            bbbbbbbbbbbbbbbb
+            "/>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
