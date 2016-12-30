@@ -1,58 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!--appbarLayout 负责将子view 跟随某个可滑动的View进行滑动 -->
-    <!--coordinatorLayout 就是通过不同的behavior来协调,当子view中有一个
-    的位置或者大小发生变化的时候,其他的子View的变化,具体的变化以behavior来定,
-    可以自定义Behavior-->
-    <!--1、appbarLayout 要被包含在 CoordinatorLayout中,
-    让其来协调 和可滑动的view的动作
-    ,appbarLayout中内置了appbarLayout.behavior
-    2、可滑动的View要设置 layout_behavior为
-    @string/appbar_scrolling_view_behavior
-    其实就是AppbarLayout.AppbarScrollingViewBehavior
-    也用来被协调位置变化
-    3、AppbarLayout要滑动的子 View要设置layout_scrollFlags属性
-        多个子View都可以设置
-    -->
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tool_bar"
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:minHeight="30dp"
-            app:title="主题"
-            app:subtitle="副主题"
-            app:logo="@mipmap/ic_launcher"
-            app:layout_scrollFlags="scroll">
-        </android.support.v7.widget.Toolbar>
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:minHeight="20dp"
-            app:tabPaddingStart="0dp"
-            app:tabPaddingEnd="0dp"
-            app:tabMode="fixed"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
-            >
-        </android.support.design.widget.TabLayout>
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="#FF91CDF3"
+            app:title="标题"
+            app:collapsedTitleTextAppearance="@color/colorAccent"
+            app:expandedTitleTextAppearance="@color/colorPrimaryDark"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/material_design"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="1"/>
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:logo="@mipmap/ic_launcher"
+                app:layout_collapseMode="pin">
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+        
     </android.support.design.widget.AppBarLayout>
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="文章来源：环球科学ScientificAmerican 微信公众号
+            android:text="
+             CoordinatorLayout 负责协调各个子View间的动作，子View要写Layout_behavior属性
+            我们也可以自定义Behavior
+            Appbar负责管理ToolBar和tabLayout的滑动是折叠效果，layout_scrollflags属性要添加
+            Appbar中还可以加入CollapsingToolBarLayout，用来折叠toolbar和其他的View
+            实现toolbar的动态效果，关键属性书Layout_collapseMode  有paramx 和 pin两个属性
+            还有floatActionBottom的anchor 和anchor_gravity属性
+            还有BottomBehaviorSheet文章来源：环球科学ScientificAmerican 微信公众号
 
 作者简介：史蒂芬·霍金（Stephen Hawking），英国著名物理学家与宇宙学家，被誉为继爱因斯坦后最杰出的理论物理学家之一。英国皇家学会院士（1974年，是当时最年轻的院士），美国科学院外籍院士（1992年），1979年至2009年剑桥大学卢卡斯数学教授，现任剑桥大学理论宇宙学中心研究主任。
 
@@ -79,6 +74,52 @@
 中文翻译
 
 粒子物理学绝对不是一个行将就木的领域，也与它在1980年代的面貌完全不同。从那以后，标准模型看起来基本上已被证实，这给人一种该领域已经完成的印象。然而，这绝不是真实情况。自然界还存在标准模型无法解释的许多现象，其中包括CP破坏，中微子振荡，和暗物质，等等。同时我们还有大量理论上的难题：如何包含引力、量子场论中新近发现的各种对偶、夸克禁闭、暗能量、黑洞、和早期宇宙学。这是一个非同寻常的领域，它对于有志向、有兴趣探索我们的宇宙如何运行的年轻人提出了巨大的挑战。在这方面，中国有成为世界领导者的绝佳机遇 —— 不要错过它！一个很好的范例就是建造巨型对撞机，它将在今后五十年中引领高能物理学。
-            "/>
+          "/>
     </android.support.v4.widget.NestedScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:elevation="5dp"
+        android:src="@android:drawable/sym_action_email"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_marginRight="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#fefefe"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="0dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="butom1"/>
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="butom2"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="butom3"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="butom4"/>
+    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/menu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:borderWidth="0dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_anchor="@id/bottom_sheet"
+        app:layout_anchorGravity="top|right"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:pressedTranslationZ="10dp"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.testtab.CollapsingActivity;
 import com.example.testtab.CoordinatorActivity;
 import com.example.testtab.R;
 
@@ -22,6 +23,7 @@ public class SettingPager extends Fragment {
     private View  rootView;
     private TextView tv;
     private Button btCoordinator;
+    private Button btCollapsing;
 
     @Nullable
     @Override
@@ -33,10 +35,17 @@ public class SettingPager extends Fragment {
         if(rootView == null){
             rootView = View.inflate(getActivity(), R.layout.fragment_setting_pager,null);
             btCoordinator = (Button) rootView.findViewById(R.id.bt_coordinatorLayout);
+            btCollapsing = (Button) rootView.findViewById(R.id.bt_collapsingLayout);
             btCoordinator.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(getContext(),CoordinatorActivity.class));
+                }
+            });
+            btCollapsing.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getContext(),CollapsingActivity.class));
                 }
             });
             tv = (TextView) rootView.findViewById(R.id.textView);

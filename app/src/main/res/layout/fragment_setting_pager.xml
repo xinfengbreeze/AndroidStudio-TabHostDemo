@@ -12,7 +12,15 @@
     <Button
         android:id="@+id/bt_coordinatorLayout"
         android:layout_width="match_parent"
-        android:background="#669966"
+        android:background="@drawable/btn_green_rect_bg"
+        android:layout_margin="10dp"
         android:layout_height="80dp"
-        android:text="TestCoordinatorLayout"/>
+        android:text="测试协调布局"/>
+    <Button
+        android:id="@+id/bt_collapsingLayout"
+        android:layout_width="match_parent"
+        android:background="@drawable/btn_green_rect_bg"
+        android:layout_margin="10dp"
+        android:layout_height="80dp"
+        android:text="测试折叠布局"/>
 </LinearLayout>
